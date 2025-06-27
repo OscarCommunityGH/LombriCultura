@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LombriCultura - Productos Naturales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2d5016;
+            background: linear-gradient(135deg, #f0f8e8 0%, #e8f5e8 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+.logo {
+    display: flex;
+    align-items: center; /* Centrado vertical perfecto */
+    gap: 15px; /* Más espacio entre imagen y texto */
+    font-size: 2.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 70px; /* Altura fija para consistencia */
+}
+
+/* Remover el emoji anterior */
+.logo::before {
+    display: none;
+}
+
+/* Efectos hover para todo el logo */
+.logo:hover {
+    transform: translateY(-2px);
+}
+
+/* Estilos para la imagen del logo */
+.logo-image {
+    height: 100px; /* Más grande */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: all 0.3s ease;
+    vertical-align: middle; /* Alineación uniforme */
+}
+
+/* Estilos para el texto del logo */
+.logo-text {
+    font-size: 2.7rem; /* Ligeramente más grande para equilibrar */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    line-height: 1; /* Elimina espaciado extra */
+    vertical-align: middle; /* Alineación uniforme */
+}
+
+/* Responsive: en móviles */
+@media (max-width: 768px) {
+    .logo-text {
+        display: none; /* Ocultar texto en móviles */
+    }
+    
+    .logo-image {
+        height: 50px; /* Más grande también en móviles */
+    }
+    
+    .logo {
+        gap: 0;
+        height: 100px; /* Altura ajustada para móviles */
+    }
+}
+
+/* Responsive: en tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .logo-image {
+        height: 55px; /* Tamaño intermedio */
+    }
+    
+    .logo-text {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        height: 65px;
+    }
+}
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Page Sections */
+        .page {
+            display: none;
+            min-height: calc(100vh - 200px);
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.6) 0%, rgba(74, 124, 89, 0.6) 100%);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.4);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 30px rgba(45, 80, 22, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(45, 80, 22, 0.2);
+            border-color: #4a7c59;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4e8d4 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-info h3 {
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a7c59;
+            margin: 1rem 0;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(45, 80, 22, 0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            color: #2d5016;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2d5016;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e8f5e8;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4a7c59;
+            box-shadow: 0 0 10px rgba(74, 124, 89, 0.2);
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem 0;
+            color: #2d5016;
+        }
+
+        /* Payment Form */
+        .payment-form {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+        }
+
+        .payment-form h3 {
+            color: #2d5016;
+            margin-bottom: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5016;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+
+        .feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
+}
+
+.feature-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+}
+
+.feature-icon img {
+    width: 50px;
+    height: 50px;
+    filter: brightness(0) invert(1);
+}
+
+.login-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.login-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Indicador de usuario logueado */
+.user-logged {
+    background: rgba(76, 175, 80, 0.2);
+    border: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+/* Notificaciones estéticas */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    z-index: 3000;
+    min-width: 300px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border-left: 4px solid #ffffff;
+}
+
+.notification.info {
+    background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%);
+    border-left: 4px solid #ffffff;
+}
+
+.notification.logout {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    border-left: 4px solid #ffffff;
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+}
+
+.notification-message {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.notification-close {
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    padding: 4px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="Images/Logo.png" alt="" class="logo-image">
+                    <span class="logo-text">LombriCultura</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showPage('inicio')" class="nav-link active">Inicio</a></li>
+                        <li><a href="#" onclick="showPage('productos')" class="nav-link">Productos</a></li>
+                        <li><a href="#" onclick="showPage('nosotros')" class="nav-link">Sobre Nosotros</a></li>
+                        <li><a href="#" onclick="showPage('contacto')" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="cart-icon" onclick="openCart()">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+
+                <div class="login-icon" onclick="openLogin()">👤</div>
+
+
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Página de Inicio -->
+        <div id="inicio" class="page active">
+            <div class="hero">
+
+                <img src="Images/Img-1-1.jpg" 
+                     alt="Fondo de naturaleza" 
+                     class="hero-background"
+                     id="heroImage">
+                
+                <div class="hero-content">
+                    <h1>Bienvenido a LombriCultura</h1>
+                    <p>Descubre productos naturales y sostenibles que cuidan de ti y del planeta. Calidad premium directamente de la naturaleza de manera orgánica.</p>
+                    <a href="#" onclick="showPage('productos')" class="btn">Explorar Productos</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 3rem 0;">
+                <h2 style="color: #2d5016; margin-bottom: 2rem;">Productos Destacados</h2>
+                <div class="products-grid" id="featuredProducts"></div>
+            </div>
+        </div>
+
+        <!-- Página de Productos -->
+        <div id="productos" class="page">
+            <h2 style="text-align: center; color: #2d5016; margin-bottom: 2rem; font-size: 2.5rem;">Nuestros Productos</h2>
+            <div class="products-grid" id="allProducts"></div>
+        </div>
+
+        <!-- Página Sobre Nosotros -->
+        <div id="nosotros" class="page">
+            <div class="about-content">
+                <h2>Sobre Nosotros</h2>
+                <p>En LombriCultura, creemos en el poder transformador de la naturaleza. Desde 2024, nos hemos dedicado a ofrecer productos naturales de la más alta calidad, cuidadosamente seleccionados y procesados de manera sostenible y orgánica.</p>
+                
+                <p>Nuestra misión es conectar a las personas con los beneficios puros de la naturaleza, promoviendo un estilo de vida saludable y respetuoso con el medio ambiente. Trabajamos directamente con productores locales y comunidades rurales, asegurando prácticas justas y sostenibles.</p>
+                
+                <p>Cada producto en nuestra tienda ha sido elegido con dedicación, pensando en tu bienestar y el cuidado del planeta que compartimos.</p>
+                
+                <p>Nosotros somos estudiantes del Centro Educativo de Bachillerato Estatal 04 (CEBES 04), encargados de la realización de todos los productos y administración de la tienda. Todos nuestros productos han sido hechos a mano sin químicos, con el objetivo de que las personas como tú adquieran conciencia de la situación y apoyen el medio ambiente con prácticas naturales y sostenibles.</p>
+                
+                <p>El proceso comienza con la recolección de residuos orgánicos, como cáscaras de frutas, verduras, hojas secas y cartón sin tinta. Estos materiales se colocan en un contenedor especial junto con un lecho húmedo, que sirve como hábitat para las lombrices.</p>
+                
+                <p>Luego añadimos la lombriz roja californiana, una especie muy eficaz para descomponer residuos. Durante las siguientes semanas, las lombrices digieren los desechos y producen humus de lombriz, un abono natural y muy rico en nutrientes.</p>
+
+                <p>Una vez que el humus está maduro (normalmente entre 2 y 3 meses), lo separamos del resto del material. Parte de este humus se puede usar para preparar té de humus, un fertilizante líquido ideal para aplicar directamente en las raíces o en hojas.</p>
+
+                <p>Finalmente, todos estos productos se aplican directamente en huertos y jardines, ayudando a mejorar el suelo, nutrir las plantas y cultivar alimentos más sanos, de manera natural y sustentable.</p>
+                
+                <div style="margin: 3rem 0; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+                    <div style="text-align: center;">
+                        <div class="feature-icon">
+                            <img src="Images/Logo.png" alt="Natural">
+                        </div>
+                        <h3 style="color: #2d5016;">100% Natural</h3>
+                        <p>Sin químicos ni aditivos artificiales</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="feature-icon">
+                            <img src="Images/Img-8.png" alt="Sostenible">
+                        </div>
+                        <h3 style="color: #2d5016;">Sostenible</h3>
+                        <p>Cuidamos el planeta en cada paso</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="feature-icon">
+                            <img src="Images/Img-9.png" alt="Calidad">
+                        </div>
+                        <h3 style="color: #2d5016;">Calidad Premium</h3>
+                        <p>Los mejores productos seleccionados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página de Contacto -->
+        <div id="contacto" class="page">
+            <h2 style="text-align: center; color: #2d5016; margin-bottom: 2rem; font-size: 2.5rem;">Contáctanos</h2>
+            
+            <div class="contact-form">
+                <form onsubmit="submitContact(event)">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Enviar Mensaje</button>
+                </form>
+            </div>
+            
+            <!-- Reemplaza la sección de contacto en tu HTML existente -->
+<div style="text-align: center; margin-top: 3rem;">
+    <h3 style="color: #2d5016; margin-bottom: 2rem;">Otras formas de contacto</h3>
+    
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;">
+        <!-- Email -->
+        <div style="display: flex; align-items: center; gap: 0.5rem; padding: 1rem; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1); transition: all 0.3s ease; min-width: 250px;" 
+             onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(45, 80, 22, 0.2)'" 
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(45, 80, 22, 0.1)'">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #ea4335 0%, #d33b2c 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(234, 67, 53, 0.3);">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.0.0/gmail.svg" 
+                     alt="Email" 
+                     style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </div>
+            <div style="text-align: left;">
+                <p style="margin: 0; font-weight: bold; color: #2d5016;">Email</p>
+                <p style="margin: 0; font-size: 0.9rem; color: #666;">lozanopedrajooscaromar1@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div style="display: flex; align-items: center; gap: 0.5rem; padding: 1rem; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1); transition: all 0.3s ease; min-width: 250px;" 
+             onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(45, 80, 22, 0.2)'" 
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(45, 80, 22, 0.1)'">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.0.0/whatsapp.svg" 
+                     alt="WhatsApp" 
+                     style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </div>
+            <div style="text-align: left;">
+                <p style="margin: 0; font-weight: bold; color: #2d5016;">WhatsApp</p>
+                <p style="margin: 0; font-size: 0.9rem; color: #666;">+52 241 183 1445 / 241 119 3834</p>
+            </div>
+        </div>
+
+        <!-- Ubicación -->
+        <div style="display: flex; align-items: center; gap: 0.5rem; padding: 1rem; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1); transition: all 0.3s ease; min-width: 250px;" 
+             onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(45, 80, 22, 0.2)'" 
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(45, 80, 22, 0.1)'">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.0.0/googlemaps.svg" 
+                     alt="Ubicación" 
+                     style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </div>
+            <div style="text-align: left;">
+                <p style="margin: 0; font-weight: bold; color: #2d5016;">Ubicación</p>
+                <p style="margin: 0; font-size: 0.9rem; color: #666;">Apizaco, Tlaxcala, México</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Redes Sociales Adicionales -->
+    <div style="margin-top: 2rem;">
+        <h4 style="color: #2d5016; margin-bottom: 1rem;">Síguenos en Redes Sociales</h4>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/share/1EL6PqnGr2/" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: linear-gradient(135deg, #1877f2 0%, #166fe5 100%); border-radius: 50%; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);"
+               onmouseover="this.style.transform='translateY(-3px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(24, 119, 242, 0.4)'"
+               onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(24, 119, 242, 0.3)'">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.0.0/facebook.svg" 
+                     alt="Facebook" 
+                     style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/oscarcommunity_?igsh=dnNlc2tkZ3J1anE1" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: linear-gradient(135deg, #e4405f 0%, #833ab4 50%, #f77737 100%); border-radius: 50%; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3);"
+               onmouseover="this.style.transform='translateY(-3px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(228, 64, 95, 0.4)'"
+               onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(228, 64, 95, 0.3)'">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.0.0/instagram.svg" 
+                     alt="Instagram" 
+                     style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@oscarcommunity_tk?_t=ZS-8xYx0Fgv66C&_r=1" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: linear-gradient(135deg, #000000 0%, #fe2c55 100%); border-radius: 50%; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3);"
+               onmouseover="this.style.transform='translateY(-3px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(254, 44, 85, 0.4)'"
+               onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(254, 44, 85, 0.3)'">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.0.0/tiktok.svg" 
+                     alt="TikTok" 
+                     style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://youtube.com/@canalsep?si=nU7IQ5fca5RBJo8k" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); border-radius: 50%; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);"
+               onmouseover="this.style.transform='translateY(-3px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(255, 0, 0, 0.4)'"
+               onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 0, 0, 0.3)'">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.0.0/youtube.svg" 
+                     alt="YouTube" 
+                     style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+        </div>
+    </div>
+</div>
+        </div>
+    </main>
+
+    <!-- Modal del Carrito -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2 style="color: #2d5016; margin-bottom: 1rem;">Tu Carrito de Compras</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total" id="cartTotal">Total: $0.00</div>
+            
+            <div class="payment-form">
+                <h3>Información de Pago</h3>
+                <form onsubmit="processPayment(event)">
+                    <div class="form-group">
+                        <label for="cardName">Nombre en la Tarjeta</label>
+                        <input type="text" id="cardName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardNumber">Número de Tarjeta</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardExpiry">Fecha de Vencimiento</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCVC">CVC</label>
+                            <input type="text" id="cardCVC" placeholder="123" maxlength="3" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="billingAddress">Dirección de Facturación</label>
+                        <textarea id="billingAddress" rows="3" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">
+                        Procesar Pago
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+    <div class="modal-content" style="max-width: 400px;">
+        <span class="close" onclick="closeLogin()">&times;</span>
+        <h2 style="color: #2d5016; margin-bottom: 1.5rem; text-align: center;">Iniciar Sesión</h2>
+        
+        <form onsubmit="processLogin(event)">
+            <div class="form-group">
+                <label for="loginEmail">Correo Electrónico</label>
+                <input type="email" id="loginEmail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="loginPassword">Contraseña</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%; margin-bottom: 1rem;">
+                Iniciar Sesión
+            </button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 1rem;">
+            <p style="color: #666; margin-bottom: 0.5rem;">¿No tienes cuenta?</p>
+            <button onclick="showRegister()" class="btn" style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%);">
+                Crear Cuenta
+            </button>
+        </div>
+        
+        <div style="text-align: center; margin-top: 1rem;">
+            <a href="#" onclick="showForgotPassword()" style="color: #4a7c59; text-decoration: none; font-size: 0.9rem;">
+                ¿Olvidaste tu contraseña?
+            </a>
+        </div>
+    </div>
+</div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LombriCultura Todos los derechos reservados. | Cuidando la naturaleza, cuidando tu bienestar.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Datos de productos
+        const products = [
+            {
+                id: 1,
+                name: "Lombiz Californiana",
+                price: 150,
+                quantity: "500gr",
+                description: "Lombriz ideal para producir humus de alta calidad, resistente y reproductiva.",
+                image: "Images/Img-1.jpg"
+            },
+            {
+                id: 2,
+                name: "Plántula de Lechuga",
+                price: 15,
+                quantity: "1 pza",
+                description: "Listas para trasplante, crecen rápido y son ideales para huertos caseros.",
+                image: "Images/Img-2.jpg"
+            },
+            {
+                id: 3,
+                name: "Humus de Lombiz",
+                price: 60,
+                quantity: "1kg",
+                description: "Fertilizante natural que mejora el suelo, retiene nutrientes y favorece el crecimiento.",
+                image: "Images/Img-3.jpg"
+            },
+            {
+                id: 4,
+                name: "Té de Humus",
+                price: 50,
+                quantity: "850ml",
+                description: "Solución líquida rica en microorganismos beneficiosos para plantas y raíces.",
+                image: "Images/Img-4.jpeg"
+            },
+            {
+                id: 5,
+                name: "Plántula de Jitomate",
+                price: 18,
+                quantity: "1 pza",
+                description: "Variedad de jitomate dulce, perfecta para macetas o camas elevadas.",
+                image: "Images/Img-5.jpg"
+            },
+            {
+                id: 6,
+                name: "Sustrato Orgánico",
+                price: 70,
+                quantity: "5kg",
+                description: "Mezcla lista para siembra con tierra negra, composta y humus de lombriz.",
+                image: "Images/Img-6.webp"
+            },    
+        ];
+
+        let cart = [];
+
+        // Navegación
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Renderizar productos
+function renderProducts(container, productsToRender) {
+    const html = productsToRender.map(product => `
+        <div class="product-card">
+            <div class="product-image">
+                ${product.image ? 
+                    `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">` 
+                    : product.emoji || '📦'
+                }
+            </div>
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                ${product.quantity ? `<div class="product-quantity">${product.quantity}</div>` : ''}
+                <p>${product.description}</p>
+                <div class="product-price">$${product.price}.00 MXN</div>
+                <button class="add-to-cart" onclick="addToCart(${product.id})">
+                    Agregar al Carrito
+                </button>
+            </div>
+        </div>
+    `).join('');
+    
+    document.getElementById(container).innerHTML = html;
+}
+
+        // Agregar al carrito
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            
+            updateCartCount();
+            
+            // Animación de confirmación
+            event.target.style.background = '#28a745';
+            event.target.textContent = '¡Agregado!';
+            setTimeout(() => {
+                event.target.style.background = '';
+                event.target.textContent = 'Agregar al Carrito';
+            }, 1000);
+        }
+
+        // Actualizar contador del carrito
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Abrir carrito
+        function openCart() {
+            document.getElementById('cartModal').style.display = 'block';
+            renderCart();
+        }
+
+        // Cerrar carrito
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        // Renderizar carrito
+        function renderCart() {
+            const cartItemsHtml = cart.map(item => `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small>$${item.price}.00 MXN c/u</small>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <button onclick="updateQuantity(${item.id}, -1)" style="background: #ff6b6b; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" style="background: #4a7c59; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">+</button>
+                        <button onclick="removeFromCart(${item.id})" style="background: #dc3545; color: white; border: none; padding: 0.3rem 0.6rem; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('cartItems').innerHTML = cartItemsHtml || '<p style="text-align: center; color: #999;">Tu carrito está vacío</p>';
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').textContent = `Total: $${total}.00 MXN`;
+        }
+
+        // Actualizar cantidad
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    renderCart();
+                    updateCartCount();
+                }
+            }
+        }
+
+        // Eliminar del carrito
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            renderCart();
+            updateCartCount();
+        }
+
+        // Procesar pago
+        function processPayment(event) {
+            event.preventDefault();
+            
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            // Simular procesamiento de pago
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            alert(`¡Pago procesado exitosamente!\n\nTotal: $${total}.00 MXN\n\nGracias por tu compra en LombriCultura. Recibirás un email de confirmación pronto.`);
+            
+            // Limpiar carrito
+            cart = [];
+            updateCartCount();
+            closeCart();
+            
+            // Resetear formulario
+            event.target.reset();
+        }
+
+        // Enviar contacto
+        function submitContact(event) {
+            event.preventDefault();
+            alert('¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.');
+            event.target.reset();
+        }
+
+        // Formatear número de tarjeta
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardNumber = document.getElementById('cardNumber');
+            const cardExpiry = document.getElementById('cardExpiry');
+            
+            cardNumber.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+                e.target.value = value;
+            });
+            
+            cardExpiry.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                e.target.value = value;
+            });
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('cartModal');
+            if (event.target === modal) {
+                closeCart();
+            }
+        });
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Renderizar productos destacados en inicio (primeros 3)
+            renderProducts('featuredProducts', products.slice(0, 3));
+            
+            // Renderizar todos los productos
+            renderProducts('allProducts', products);
+        });
+
+        let isLoggedIn = false;
+let currentUser = null;
+
+// Función para mostrar notificaciones estéticas
+function showNotification(type, title, message, duration = 4000) {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    
+    // Iconos para diferentes tipos
+    const icons = {
+        success: '✅',
+        info: 'ℹ️',
+        logout: '👋'
+    };
+    
+    notification.innerHTML = `
+        <div class="notification-icon">${icons[type] || '🔔'}</div>
+        <div class="notification-content">
+            <div class="notification-title">${title}</div>
+            <div class="notification-message">${message}</div>
+        </div>
+        <div class="notification-close" onclick="closeNotification(this)">×</div>
+    `;
+    
+    // Agregar al DOM
+    document.body.appendChild(notification);
+    
+    // Mostrar con animación
+    setTimeout(() => {
+        notification.classList.add('show', 'bounce');
+    }, 100);
+    
+    // Auto-remover después del tiempo especificado
+    setTimeout(() => {
+        closeNotification(notification);
+    }, duration);
+    
+    return notification;
+}
+
+// Función para cerrar notificación
+function closeNotification(element) {
+    const notification = element.classList ? element : element.parentElement;
+    notification.classList.remove('show');
+    
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.parentElement.removeChild(notification);
+        }
+    }, 400);
+}
+
+// Abrir modal de login
+function openLogin() {
+    if (isLoggedIn) {
+        // Si ya está logueado, mostrar opciones de usuario
+        showUserMenu();
+    } else {
+        document.getElementById('loginModal').style.display = 'block';
+    }
+}
+
+// Cerrar modal de login
+function closeLogin() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
+// Procesar login
+function processLogin(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    // Aquí puedes agregar validación real
+    // Por ahora simularemos un login exitoso
+    if (email && password) {
+        isLoggedIn = true;
+        currentUser = {
+            email: email,
+            name: email.split('@')[0] // Usar la parte antes del @ como nombre
+        };
+        
+        // Cambiar el ícono para mostrar que está logueado
+        const loginIcon = document.querySelector('.login-icon');
+        loginIcon.classList.add('user-logged');
+        loginIcon.innerHTML = '✓';
+        
+        // Mostrar notificación de bienvenida
+        showNotification(
+            'success',
+            '¡Bienvenido!',
+            `Hola ${currentUser.name}, has iniciado sesión correctamente. ¡Disfruta de tu experiencia en LombriCultura!`
+        );
+        
+        closeLogin();
+        
+        // Limpiar formulario
+        event.target.reset();
+    }
+}
+
+// Mostrar registro
+function showRegister() {
+    closeLogin();
+    showNotification(
+        'info',
+        'Registro en desarrollo',
+        'Esta función estará disponible pronto. Por ahora puedes usar cualquier email y contraseña para probar el sistema.'
+    );
+}
+
+// Mostrar recuperar contraseña
+function showForgotPassword() {
+    showNotification(
+        'info',
+        'Recuperación de contraseña',
+        'Esta función estará disponible pronto. Contacta con nosotros si necesitas ayuda.'
+    );
+}
+
+// Mostrar menú de usuario
+function showUserMenu() {
+    // Crear un modal personalizado para el menú de usuario
+    const userMenuHtml = `
+        <div id="userMenu" class="modal">
+            <div class="modal-content" style="max-width: 350px; text-align: center;">
+                <span class="close" onclick="closeUserMenu()">&times;</span>
+                <div style="margin-bottom: 2rem;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem;">
+                        👤
+                    </div>
+                    <h3 style="color: #2d5016; margin-bottom: 0.5rem;">¡Hola, ${currentUser.name}!</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">${currentUser.email}</p>
+                </div>
+                
+                <button onclick="logout()" class="btn" style="width: 100%; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Agregar al DOM temporalmente
+    document.body.insertAdjacentHTML('beforeend', userMenuHtml);
+    document.getElementById('userMenu').style.display = 'block';
+}
+
+// Cerrar menú de usuario
+function closeUserMenu() {
+    const userMenu = document.getElementById('userMenu');
+    if (userMenu) {
+        userMenu.remove();
+    }
+}
+
+// Cerrar sesión
+function logout() {
+    isLoggedIn = false;
+    const userName = currentUser.name;
+    currentUser = null;
+    
+    // Restaurar ícono original
+    const loginIcon = document.querySelector('.login-icon');
+    loginIcon.classList.remove('user-logged');
+    loginIcon.innerHTML = '👤';
+    
+    // Mostrar notificación de despedida
+    showNotification(
+        'logout',
+        '¡Hasta pronto!',
+        `Gracias por visitarnos, ${userName}. Has cerrado sesión correctamente. ¡Esperamos verte pronto!`
+    );
+    
+    closeUserMenu();
+}
+
+// Cerrar modal al hacer clic fuera
+window.addEventListener('click', function(event) {
+    const loginModal = document.getElementById('loginModal');
+    const userMenu = document.getElementById('userMenu');
+    
+    if (event.target === loginModal) {
+        closeLogin();
+    }
+    
+    if (event.target === userMenu) {
+        closeUserMenu();
+    }
+});
+    </script>
+</body>
+</html>
